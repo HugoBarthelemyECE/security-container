@@ -44,6 +44,14 @@ path "containers/mon-secret" {
 }
 ```
 
+La connexion à vault se fait avec la commande curl
+
+`curl --request POST --data '{"password": "zklhjrid"}' http://172.17.0.1:8200/v1/auth/userpass/login/aurel`
+
+On obtient un jeton d'accès que l'on utilise pour extraire le secret
+
+`curl --header "X-Vault-Token: <jeton>" http://172.17.0.1:8200/v1/containers/mon-secret`
+
 ### Trouver la clé
 
 La commande `docker history` permet d'afficher l'historique des commandes exécutées dans l'image.
